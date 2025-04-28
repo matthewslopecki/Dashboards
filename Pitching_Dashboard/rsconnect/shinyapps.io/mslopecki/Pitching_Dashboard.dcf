@@ -1,0 +1,12 @@
+name: Pitching_Dashboard
+title: Pitching_Dashboard
+username: mslopecki
+account: mslopecki
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14629740
+bundleId: 10190089
+url: https://mslopecki.shinyapps.io/Pitching_Dashboard/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
