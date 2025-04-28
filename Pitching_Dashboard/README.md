@@ -1,6 +1,7 @@
 # Baseball Pitching Dashboard
 
 This project creates an interactive dashboard for Pitcher specific monitoring.
+https://mslopecki.shinyapps.io/Pitching_Dashboard/
 
 ### Inputs:
 
