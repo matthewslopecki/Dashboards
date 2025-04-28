@@ -23,7 +23,11 @@ ui <- fluidPage(
     mainPanel(
       tabsetPanel(id = "main_tab",
                   tabPanel("Pitching Data",
-                           plotlyOutput("pitch_location_plot_pitching")
+                           fluidRow(
+                             column(12, plotlyOutput("pitch_location_plot_pitching"))
+                           ),
+                           br(),
+                           DTOutput("pitching_data_table")
                   ),
                   tabPanel("Batting Data",
                            tabPanel("Batting Data",
@@ -215,6 +219,36 @@ server <- function(input, output, session) {
       ),
       plot_bgcolor = "white",
       paper_bgcolor = "white"
+    )
+  })
+  
+  # Table for plotted pitching data
+  output$pitching_data_table <- renderDT({
+    data <- filtered_data()
+    
+    # Handle empty cases
+    if (nrow(data) == 0) {
+      return(DT::datatable(data.frame(Message = "No matching pitching data"), options = list(dom = 't')))
+    }
+    
+    # Select columns to show
+    data_to_show <- data[, c(
+      "PitcherID",
+      "BatterID",
+      "PitchType",
+      "Velocity_mph",
+      "SpinRate_rpm",
+      "Outcome"
+    )]
+    
+    # Round nicely
+    data_to_show$Velocity_mph <- round(data_to_show$Velocity_mph, 1)
+    data_to_show$SpinRate_rpm <- round(data_to_show$SpinRate_rpm, 0)
+    
+    DT::datatable(
+      data_to_show,
+      rownames = FALSE,
+      options = list(pageLength = 10, scrollX = TRUE)
     )
   })
   
