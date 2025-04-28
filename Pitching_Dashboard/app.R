@@ -178,9 +178,9 @@ server <- function(input, output, session) {
           ),
           showscale = TRUE,
           colorbar = list(
-            title = "Pitch Progression",
+            title = "Pitch Order",
             tickvals = c(0, 1),
-            ticktext = c("First", "Last")
+            ticktext = c("First Pitch", "Last Pitch")
           )
         ),
         text = ~paste(
@@ -405,7 +405,7 @@ server <- function(input, output, session) {
           yaxis = list(
             zeroline = TRUE,
             showgrid = FALSE,
-            range = c(0, 1.5),
+            range = c(-0.5, 1.5),
             showticklabels = FALSE
           ),
           shapes = launch_shapes,
